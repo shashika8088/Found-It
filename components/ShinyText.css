@@ -1,0 +1,33 @@
+.shiny-text {
+  /* The text color will be inherited from Tailwind classes via 'currentColor' */
+  background-image: linear-gradient(
+    120deg,
+    transparent 30%,
+    var(--glow-color-2) 45%,
+    var(--glow-color-1) 55%,
+    transparent 70%
+  ), linear-gradient(currentColor, currentColor);
+  background-size: 200% 100%, auto;
+  background-position: 100% 0, 0 0;
+  background-repeat: no-repeat, repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+.shiny-text.disabled {
+  animation: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  -webkit-text-fill-color: unset; /* Revert for disabled state */
+}

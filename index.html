@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Found-It</title>
+    <link rel="icon" href="/logoo.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: 'hsl(222, 89%, 55%)',
+              'primary-hover': 'hsl(222, 89%, 60%)',
+              background: 'hsl(210, 40%, 98%)',
+              surface: 'hsl(0, 0%, 100%)',
+              text: 'hsl(215, 28%, 17%)',
+              'text-secondary': 'hsl(217, 19%, 35%)',
+              'text-muted': 'hsl(215, 16%, 47%)',
+              
+              'dark-primary': 'hsl(217, 91%, 60%)',
+              'dark-primary-hover': 'hsl(217, 91%, 65%)',
+              'dark-background': 'hsl(222, 47%, 11%)',
+              'dark-surface': 'hsl(220, 35%, 16%)',
+              'dark-text': 'hsl(210, 40%, 98%)',
+              'dark-text-secondary': 'hsl(215, 20%, 65%)',
+              'dark-text-muted': 'hsl(217, 33%, 80%)',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Lora', 'serif'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'slide-up': 'slideUp 0.5s ease-out forwards',
+              'spin-slow': 'spin 8s linear infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              }
+            },
+            transitionDuration: {
+              '2000': '2000ms',
+              '4000': '4000ms',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        /* For ShinyText and Search amber mask */
+        --glow-color-1: #fde68a; /* amber-200 */
+        --glow-color-2: #fcd34d; /* amber-300 */
+        
+        /* For Search conic gradients */
+        --grad-color-1: #fcd34d; /* amber-300 */
+        --grad-color-2: #fde68a; /* amber-200 */
+        --grad-color-3: #f59e0b; /* amber-500 */
+        --grad-color-4: #fbbf24; /* amber-400 */
+        --grad-color-5: #fde68a; /* amber-200 */
+        --grad-color-6: #fef3c7; /* amber-100 */
+      }
+      .dark {
+        --glow-color-1: hsl(217, 91%, 70%); /* a bright blue */
+        --glow-color-2: hsl(217, 91%, 60%); /* dark-primary blue */
+        --grad-color-1: hsl(217, 91%, 60%); 
+        --grad-color-2: hsl(217, 91%, 70%); 
+        --grad-color-3: hsl(217, 91%, 50%); 
+        --grad-color-4: hsl(217, 91%, 55%); 
+        --grad-color-5: hsl(217, 91%, 75%); 
+        --grad-color-6: hsl(217, 91%, 80%); 
+      }
+    </style>
+  
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-background dark:bg-dark-background font-sans transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
