@@ -4,10 +4,11 @@
 
 ## Features
 
-- **AI-Powered Item Description:** Automatically generates titles, descriptions, and categories for uploaded images using Google Gemini API.
-- **Semantic Search:** Find items intelligently with AI-powered understanding of natural language queries.
-- **Dark Mode:** Fully functional, persistent dark mode toggle.
-- **Animations & Interactive UI:** Draggable 3D image carousel, flowing canvas background, and smooth CSS/Framer Motion animations.
+- **AI-Powered Item Description:** Automatically generates titles, descriptions, and categories for uploaded images using Google Gemini API.  
+- **Semantic Search:** Find items intelligently with AI-powered understanding of natural language queries.  
+- **WhatsApp Integration:** Users can easily contact item owners via WhatsApp directly from the app.  
+- **Dark Mode:** Fully functional, persistent dark mode toggle.  
+- **Animations & Interactive UI:** Draggable 3D image carousel, flowing canvas background, and smooth CSS/Framer Motion animations.  
 - **Local Persistence:** Uses `localStorage` to simulate backend storage.
 
 ## Technologies
@@ -18,7 +19,8 @@
 - **Framer Motion** for advanced animations  
 - **HTML5 Canvas** for dynamic backgrounds  
 - **Google Gemini AI** for image analysis and semantic search  
-- **Bundler-less Setup** using import maps and CDN dependencies  
+- **WhatsApp API** for direct communication  
+- **Bundler-less Setup** using import maps and CDN dependencies   
 
 ## Project Structure
 
