@@ -1,5 +1,6 @@
+// src/components/ItemList.tsx
 import React from 'react';
-import { Item, ItemType } from '../types';
+import { Item, ItemType, User } from '../types';
 import ItemCard from './ItemCard';
 import Spinner from './Spinner';
 
@@ -10,9 +11,11 @@ interface ItemListProps {
   itemType: ItemType;
   isSearchResult: boolean;
   searchQuery: string;
+  currentUser?: User | null;
+  onRetrieve?: (id: string) => void;
 }
 
-const ItemList: React.FC<ItemListProps> = ({ items, isLoading, error, itemType, isSearchResult, searchQuery }) => {
+const ItemList: React.FC<ItemListProps> = ({ items, isLoading, error, itemType, isSearchResult, searchQuery, currentUser, onRetrieve }) => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -51,7 +54,13 @@ const ItemList: React.FC<ItemListProps> = ({ items, isLoading, error, itemType, 
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-fade-in">
         {items.map((item, index) => (
-          <ItemCard key={item.id} item={item} style={{ animationDelay: `${index * 50}ms` }} />
+          <ItemCard 
+            key={item.id} 
+            item={item} 
+            style={{ animationDelay: `${index * 50}ms` }} 
+            currentUser={currentUser}
+            onRetrieve={onRetrieve}
+          />
         ))}
       </div>
     </div>

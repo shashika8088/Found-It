@@ -26,6 +26,7 @@ interface ItemFormModalProps {
   isOpen: boolean;
   onClose: () => void;
   onAddItem: (item: Omit<Item, 'id' | 'timestamp'>) => Promise<void>;
+  currentUser?: { id: string } | undefined;
 }
 
 const ItemFormModal: React.FC<ItemFormModalProps> = ({ isOpen, onClose, onAddItem }) => {

@@ -1,6 +1,13 @@
+// src/types.ts
 export enum ItemType {
   LOST = 'lost',
   FOUND = 'found',
+}
+
+export interface User {
+  id: string;
+  username: string;
+  password: string;
 }
 
 export interface Item {
@@ -11,8 +18,11 @@ export interface Item {
   category: string;
   location: string;
   imageUrl: string;
-  timestamp: Date;
+  // store ISO strings in localStorage, but components can accept Date too
+  timestamp: string | Date;
   contactNumber: string;
+  ownerId: string;    // new -> who created the item
+  retrieved: boolean; // new -> whether owner marked retrieved
 }
 
 export interface UserExperience {
