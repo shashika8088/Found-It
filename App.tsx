@@ -164,11 +164,22 @@ const App: React.FC = () => {
 const handleDelete = (id: string) => {
   if (!confirm("Are you sure you want to delete this item permanently?")) return;
 
-  setLostItems(prev => prev.filter(item => item.id !== id));
-  setFoundItems(prev => prev.filter(item => item.id !== id));
+  // Update LOST
+  setLostItems(prev => {
+    const updated = prev.filter(item => item.id !== id);
+    localStorage.setItem("lost_items", JSON.stringify(updated));
+    return updated;
+  });
 
-  // Persist to localStorage for consistency
-  localStorage.setItem("items", JSON.stringify([...lostItems.filter(i => i.id !== id), ...foundItems.filter(i => i.id !== id)]));
+  // Update FOUND
+  setFoundItems(prev => {
+    const updated = prev.filter(item => item.id !== id);
+    localStorage.setItem("found_items", JSON.stringify(updated));
+    return updated;
+  });
+
+  // Force re-render so itemsToDisplay recalculates
+  setSearchResults(null);
 };
 
 
@@ -253,6 +264,7 @@ const handleDelete = (id: string) => {
               searchQuery={searchQuery}
               currentUser={user}
               onRetrieve={handleRetrieve}
+              onDelete={handleDelete}
             />
           </div>
         </div>

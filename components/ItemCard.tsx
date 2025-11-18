@@ -3,12 +3,16 @@ import { Item, User } from '../types';
 import TimeIcon from './icons/TimeIcon';
 import LocationIcon from './icons/LocationIcon';
 import WhatsappIcon from './icons/WhatsappIcon';
+import DeleteIcon from './icons/DeleteIcon';
+
 
 interface ItemCardProps {
   item: Item;
   style?: React.CSSProperties;
   currentUser?: User | null;
   onRetrieve?: (id: string) => void;
+  onDelete?: (id: string) => void;
+
 }
 
 const timeAgo = (input: string | Date): string => {
@@ -27,7 +31,7 @@ const timeAgo = (input: string | Date): string => {
   return Math.floor(seconds) + " seconds ago";
 };
 
-const ItemCard: React.FC<ItemCardProps> = ({ item, style, currentUser, onRetrieve }) => {
+const ItemCard: React.FC<ItemCardProps> = ({ item, style, currentUser, onRetrieve, onDelete }) => {
   const { title, description, location, imageUrl, timestamp, category, contactNumber, retrieved } = item;
 
   const handleContact = () => {
@@ -92,16 +96,43 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, style, currentUser, onRetriev
         </button>
 
         {/* Owner-only Mark as Retrieved */}
-        {currentUser?.id === item.ownerId && !retrieved && (
-          <button
-            onClick={handleMarkRetrieved}
-            className="mt-3 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-amber-900 bg-amber-200 hover:bg-amber-300  dark:bg-dark-primary dark:hover:bg-dark-primary-hover dark:text-dark-text
-                         focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-300 dark:focus:ring-dark-primary
-                         transition-colors"
-          >
-            Mark as Retrieved
-          </button>
-        )}
+        {/* Owner-only actions */}
+        {currentUser?.id === item.ownerId && (
+  <div className="flex gap-2 mt-3">
+
+    {/* Show Mark as Retrieved ONLY when not retrieved */}
+    {!retrieved && (
+      <button
+        onClick={handleMarkRetrieved}
+        className="flex-1 inline-flex items-center justify-center px-4 py-2 text-sm
+                   font-medium rounded-md text-amber-900 bg-amber-200 hover:bg-amber-300 
+                   dark:bg-dark-primary dark:hover:bg-dark-primary-hover dark:text-dark-text
+                   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-300
+                   transition-colors"
+      >
+        Mark as Retrieved
+      </button>
+    )}
+
+    {/* Delete Button (Owner always allowed) */}
+    <button
+      onClick={() => {
+        if (confirm("Are you sure you want to delete this item? This cannot be undone.")) {
+          onDelete?.(item.id);
+        }
+      }}
+      title="Delete Item"
+      className="px-3 py-2 bg-red-100 hover:bg-red-200 dark:bg-red-900/50 
+                 dark:hover:bg-red-900 text-red-700 dark:text-red-300 rounded-md 
+                 flex items-center justify-center transition-colors"
+    >
+      <DeleteIcon className="h-5 w-5" />
+    </button>
+
+  </div>
+)}
+
+
 
         {/* Retrieved label */}
         {retrieved && (
