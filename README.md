@@ -19,8 +19,7 @@
 - **Framer Motion** for advanced animations  
 - **HTML5 Canvas** for dynamic backgrounds  
 - **Google Gemini AI** for image analysis and semantic search  
-- **WhatsApp API** for direct communication  
-- **Bundler-less Setup** using import maps and CDN dependencies   
+- **WhatsApp API** for direct communication     
 
 ## Project Structure
 
