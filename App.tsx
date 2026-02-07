@@ -87,18 +87,9 @@ const App: React.FC = () => {
     }
   };
 
-  // handle adding item - attach ownerId and retrieved=false
-  const handleAddItem = async (itemData: Omit<Item, 'id' | 'timestamp' | 'ownerId' | 'retrieved'>) => {
-    if (!user) {
-      // guard - shouldn't happen because we force login before opening modal
-      setIsAuthModalOpen(true);
-      return;
-    }
-    const newItem = await apiAddItem({
-      ...itemData,
-      ownerId: user.id,
-      retrieved: false,
-    } as any);
+  // handle adding item
+  const handleAddItem = async (itemData: Omit<Item, 'id' | 'timestamp'>) => {
+    const newItem = await apiAddItem(itemData);
     if (newItem.type === ItemType.LOST) {
       setLostItems(prev => [newItem, ...prev]);
     } else {

@@ -29,7 +29,7 @@ interface ItemFormModalProps {
   currentUser?: { id: string } | undefined;
 }
 
-const ItemFormModal: React.FC<ItemFormModalProps> = ({ isOpen, onClose, onAddItem }) => {
+const ItemFormModal: React.FC<ItemFormModalProps> = ({ isOpen, onClose, onAddItem, currentUser }) => {
   const [type, setType] = useState<ItemType>(ItemType.LOST);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -113,6 +113,8 @@ const ItemFormModal: React.FC<ItemFormModalProps> = ({ isOpen, onClose, onAddIte
         location,
         contactNumber,
         imageUrl: imagePreview, // In a real app, you'd upload this and get a URL. For this mock, we use the data URL.
+        ownerId: currentUser?.id || 'anonymous',
+        retrieved: false,
       });
     } catch (err) {
       setError('Failed to add item. Please try again.');
