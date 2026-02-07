@@ -20,6 +20,8 @@ const initialLostItems: Item[] = [
     imageUrl: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=400&auto=format&fit=crop',
     timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
     contactNumber: '918088199509',
+    ownerId: 'user1',
+    retrieved: false,
   },
   {
     id: 'l2',
@@ -31,6 +33,8 @@ const initialLostItems: Item[] = [
     imageUrl: 'https://images.unsplash.com/photo-1610438235354-a6ae5528385c?q=80&w=400&auto=format&fit=crop',
     timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
     contactNumber: '918088199509',
+    ownerId: 'user2',
+    retrieved: false,
   },
   {
     id: 'l3',
@@ -42,6 +46,8 @@ const initialLostItems: Item[] = [
     imageUrl: 'https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&dpr=1',
     timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
     contactNumber: '918088199509',
+    ownerId: 'user3',
+    retrieved: false,
   },
 ];
 
@@ -56,6 +62,8 @@ const initialFoundItems: Item[] = [
     imageUrl: '/case.png',
     timestamp: new Date(Date.now() - 1 * 60 * 60 * 1000),
     contactNumber: '918088199509',
+    ownerId: 'user4',
+    retrieved: false,
   },
   {
     id: 'f2',
@@ -67,6 +75,8 @@ const initialFoundItems: Item[] = [
     imageUrl: '/keys.png',
     timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
     contactNumber: '918088199509',
+    ownerId: 'user5',
+    retrieved: false,
   },
 ];
 
